@@ -1,8 +1,8 @@
+import ZODFormik from "./components/ZODFormik";
+import ZODFormikFieldArray from "./components/ZODFormikFieldArray";
 import { useState } from "react";
-import Button from "./components/button";
-import Count from "./components/count";
 function App() {
-  const [count, setCount] = useState(0);
+  const [show, setShow] = useState(false);
   return (
     <div
       style={{
@@ -14,8 +14,16 @@ function App() {
         flexDirection: "column",
       }}
     >
-      <Count count={count} />
-      <Button setCount={setCount} />
+      <div>
+        <button onClick={() => setShow(false)} style={{ margin: "0px 10px" }}>
+          Formik Basic
+        </button>
+        <button onClick={() => setShow(true)} style={{ margin: "0px 10px" }}>
+          Formik FieldArray
+        </button>
+        <h1>Hello Zod Formik</h1>
+      </div>
+      {!show ? <ZODFormik /> : <ZODFormikFieldArray />}
     </div>
   );
 }
